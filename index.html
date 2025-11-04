@@ -11,6 +11,7 @@
 <style>
   * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
 
+  /* 🌈 Dynamic Background */
   body {
     background: linear-gradient(-45deg, #6a11cb, #2575fc, #b721ff, #21d4fd);
     background-size:400% 400%;
@@ -19,15 +20,14 @@
     min-height:100vh;
     overflow-x:hidden;
   }
-
   @keyframes softGradient {
-    0% {background-position:0% 50%;}
-    50% {background-position:100% 50%;}
-    100% {background-position:0% 50%;}
+    0% { background-position:0% 50%; }
+    50% { background-position:100% 50%; }
+    100% { background-position:0% 50%; }
   }
 
   /* Header */
-  header {  
+  header {
     background: rgba(0,0,0,0.25);
     padding:1rem 2rem;
     display:flex;
@@ -35,38 +35,31 @@
     align-items:center;
     position:sticky;
     top:0;
-    backdrop-filter: blur(10px);
+    backdrop-filter:blur(10px);
     z-index:1000;
     flex-wrap:wrap;
+    gap:0.5rem;
   }
-  header h1 a { color:#fff; text-decoration:none; font-weight:bold; font-size:1.5rem; }
-  nav { display:flex; gap:1rem; transition:right 0.4s ease; flex-wrap:wrap; }
+  header h1 a { color:#fff; text-decoration:none; font-weight:bold; }
+  nav { display:flex; gap:1rem; transition:right 0.4s ease; }
   nav a { color:#fff; text-decoration:none; font-weight:500; position:relative; }
-  nav a::after {
-    content:"";
-    position:absolute;
-    bottom:-4px;
-    left:0;
-    width:0;
-    height:2px;
-    background:#ffea00;
-    transition:0.3s;
-  }
+  nav a::after { content:""; position:absolute; bottom:-4px; left:0; width:0; height:2px; background:#ffea00; transition:0.3s; }
   nav a:hover::after { width:100%; }
   nav a:hover { color:#ffea00; }
 
+  /* Hamburger */
   .menu-toggle { display:none; flex-direction:column; cursor:pointer; z-index:1100; }
   .menu-toggle div { width:25px; height:3px; background:#fff; margin:4px; transition:all 0.3s; }
   .menu-toggle.active div:nth-child(1) { transform:rotate(45deg) translate(5px,5px); }
   .menu-toggle.active div:nth-child(2) { opacity:0; }
   .menu-toggle.active div:nth-child(3) { transform:rotate(-45deg) translate(6px,-6px); }
-  @media (max-width:768px){
+  @media(max-width:768px){
     nav { position:fixed; top:0; right:-100%; width:70%; height:100vh; background:rgba(0,0,0,0.9); flex-direction:column; justify-content:center; align-items:center; gap:2rem; }
     nav.active { right:0; }
     .menu-toggle { display:flex; }
   }
 
-  /* Hero Section */
+  /* Hero */
   .hero { text-align:center; padding:4rem 1rem 2rem; width:100%; }
   .hero h2 { font-size:2.5rem; margin-bottom:0.5rem; }
   .hero img { width:120px; height:120px; border-radius:50%; margin-bottom:1rem; border:3px solid #ffea00; }
@@ -74,19 +67,26 @@
   .btn { background:#ffea00; color:#000; padding:0.7rem 1.4rem; border-radius:30px; text-decoration:none; font-weight:bold; transition:transform 0.3s, box-shadow 0.3s; }
   .btn:hover { transform:scale(1.1); box-shadow:0 0 10px #ffea00; }
 
-  /* Compact Search */
-  .search-wrapper { position:relative; }
+  /* Search Bar */
+  .search-wrapper { position:relative; display:flex; justify-content:center; width:100%; margin:1rem 0; }
   .search-wrapper input {
-    padding:0.3rem 0.8rem; border-radius:20px; border:none; outline:none;
-    font-size:0.9rem; background:rgba(255,255,255,0.1); color:#fff; width:180px;
-    transition:width 0.3s;
+    padding:0.5rem 1rem; border-radius:25px; border:none; outline:none;
+    width:200px; max-width:90%; background:rgba(255,255,255,0.1); color:#fff;
+    transition: width 0.3s;
   }
   .search-results {
-    position:absolute; top:30px; left:0; width:100%; background:rgba(0,0,0,0.7);
+    position:absolute; top:35px; left:50%; transform:translateX(-50%);
+    width:200px; max-width:90%; background:rgba(0,0,0,0.7);
     border-radius:10px; padding:0.3rem 0; display:none; z-index:1000;
   }
   .search-results a { display:block; padding:0.3rem 0.8rem; color:#ffea00; text-decoration:none; }
   .search-results a:hover { background:rgba(255,255,255,0.1); }
+
+  @media(max-width:768px){
+    .search-wrapper input { width:150px; font-size:0.85rem; }
+    .search-results { width:150px; }
+    header { flex-direction:column; align-items:flex-start; }
+  }
 
   /* Videos Section */
   section { padding:3rem 1rem; max-width:1000px; margin:auto; }
@@ -98,21 +98,18 @@
   .video-card a { color:#00ffe0; text-decoration:none; font-weight:500; }
   .video-card a:hover { color:#ffea00; text-shadow:0 0 10px #ffea00; }
 
+  /* Footer */
   footer { background:rgba(0,0,0,0.3); text-align:center; padding:1.5rem; font-size:0.9rem; margin-top:2rem; }
   footer a { color:#ffea00; text-decoration:none; }
 </style>
 </head>
 <body>
 
-<header style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap;">
-  <div style="display:flex; align-items:center; gap:1rem;">
-    <h1><a href="index.html">RA MUSIC ★</a></h1>
-    <div class="search-wrapper">
-      <input id="headerSearch" type="text" placeholder="Search...">
-      <div id="headerResults" class="search-results"></div>
-    </div>
+<header>
+  <h1><a href="index.html">RA MUSIC ★</a></h1>
+  <div class="menu-toggle" onclick="toggleMenu()">
+    <div></div><div></div><div></div>
   </div>
-  <div class="menu-toggle" onclick="toggleMenu()"><div></div><div></div><div></div></div>
   <nav id="menu">
     <a href="about.html">About</a>
     <a href="image.html">Gallery</a>
@@ -127,6 +124,12 @@
   <p>Subscribe to my channel and enjoy the latest songs, remixes & shorts!</p>
   <a class="btn" href="https://youtube.com/@rafahimn?si=sS8mFOkLSWNocQqb" target="_blank">Visit My YouTube Channel</a>
 </section>
+
+<!-- Search Bar -->
+<div class="search-wrapper">
+  <input type="text" id="searchInput" placeholder="Search videos, shorts...">
+  <div id="searchResults" class="search-results"></div>
+</div>
 
 <section id="long-videos" class="video-section">
   <h2>Long Videos</h2>
@@ -166,25 +169,30 @@ function toggleMenu(){
   document.querySelector(".menu-toggle").classList.toggle("active");
 }
 
-/* Search */
-const items=[
-  {title:"Ayaz Erdoğan - Hep Mi Ben? (Remix)", url:"https://youtu.be/tr-FkYSZ3II?si=xu0GyUjXTZJmGwFL"},
-  {title:"Mann Mera - Lofi (Slowed + Reverb)", url:"https://youtu.be/j3juWkCQztw?si=dvaw8QGTNfXj3991"},
-  {title:"প্রতিটি মেয়েই নিষ্ঠুর হওয়ার অসীম ক্ষমতা নিয়ে জন্মায় 😅🖤🥀", url:"https://www.youtube.com/shorts/Rr9HxX6MxsQ"},
-  {title:"She is looking so beautiful ❤️‍🩹But she come not for me 😥", url:"https://youtube.com/shorts/CCPAn6TliKs"}
+/* Search Functionality */
+const items = [
+  { title:"Ayaz Erdoğan - Hep Mi Ben? (Remix)", url:"https://youtu.be/tr-FkYSZ3II?si=xu0GyUjXTZJmGwFL" },
+  { title:"Mann Mera - Lofi (Slowed + Reverb)", url:"https://youtu.be/j3juWkCQztw?si=dvaw8QGTNfXj3991" },
+  { title:"প্রতিটি মেয়েই নিষ্ঠুর হওয়ার অসীম ক্ষমতা নিয়ে জন্মায় 😅🖤🥀", url:"https://www.youtube.com/shorts/Rr9HxX6MxsQ" },
+  { title:"She is looking so beautiful ❤️‍🩹But she come not for me 😥", url:"https://youtube.com/shorts/CCPAn6TliKs" }
 ];
 
-const searchInput=document.getElementById("headerSearch");
-const searchResults=document.getElementById("headerResults");
+const searchInput = document.getElementById("searchInput");
+const searchResults = document.getElementById("searchResults");
 
 searchInput.addEventListener("input",()=>{
-  const query=searchInput.value.toLowerCase();
-  searchResults.innerHTML="";
-  if(query==="") return searchResults.style.display="none";
-  const filtered=items.filter(item=>item.title.toLowerCase().includes(query));
+  const query = searchInput.value.toLowerCase();
+  searchResults.innerHTML = "";
+  if(query===""){ searchResults.style.display="none"; return; }
+  const filtered = items.filter(item=>item.title.toLowerCase().includes(query));
   filtered.forEach(item=>{
     const a=document.createElement("a");
     a.href=item.url; a.target="_blank"; a.textContent=item.title;
-    a.style.display="block"; a.style.padding="0.3rem 0.8rem"; a.style.color="#ffea00"; a.style.textDecoration="none";
-    a.onmouseover=()=>a.style.background="rgba(255,255,255,0.1)";
-    a
+    searchResults.appendChild(a);
+  });
+  searchResults.style.display = filtered.length>0 ? "block":"none";
+});
+</script>
+
+</body>
+</html>
