@@ -11,6 +11,7 @@
 <style>
   * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
 
+  /* Main Background */
   body {
     background: linear-gradient(to right, #0061ff, #60efff);
     color:#fff;
@@ -20,14 +21,14 @@
 
   /* Header */
   header {
-    background: rgba(0, 0, 0, 0.35);
+    background: rgba(0, 0, 50, 0.4); /* subtle difference from index.html */
     padding:1rem 2rem;
     display:flex;
     justify-content:space-between;
     align-items:center;
     position:sticky;
     top:0;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
     z-index:1000;
   }
   header h1 a { color:#fff; text-decoration:none; font-weight:bold; }
@@ -77,7 +78,7 @@
       right:-100%;
       width:70%;
       height:100vh;
-      background:rgba(0,0,0,0.9);
+      background:rgba(0,0,0,0.95);
       flex-direction:column;
       justify-content:center;
       align-items:center;
@@ -87,21 +88,26 @@
     .menu-toggle { display:flex; }
   }
 
-  /* Hero */
-  .hero { text-align:center; padding:4rem 1rem 3rem; }
+  /* Hero Section */
+  .hero {
+    text-align:center;
+    padding:5rem 1rem 4rem;
+    background: rgba(0,0,0,0.1); /* subtle overlay for Instagram page */
+    backdrop-filter: blur(2px);
+  }
   .hero img { width:120px; height:120px; border-radius:50%; margin-bottom:1rem; border:3px solid #ffea00; }
   .hero h2 { font-size:2.5rem; margin-bottom:0.5rem; }
   .hero p { font-size:1.1rem; max-width:600px; margin:0 auto 1.5rem; line-height:1.6; }
-  .btn { background:#ffea00; color:#000; padding:0.7rem 1.4rem; border-radius:30px; text-decoration:none; font-weight:bold; transition: transform 0.3s; }
-  .btn:hover { transform: scale(1.1); }
+  .btn { background:#ffea00; color:#000; padding:0.7rem 1.4rem; border-radius:25px; text-decoration:none; font-weight:bold; transition: transform 0.3s, box-shadow 0.3s; }
+  .btn:hover { transform: scale(1.1); box-shadow: 0 0 10px #ffea00; }
 
   /* Instagram Username */
   .username a {
     color:#ffea00;
     font-size:1.5rem;
-    margin-top:1rem;
-    display:inline-block;
     font-weight:bold;
+    display:inline-block;
+    margin-top:1rem;
     text-decoration:none;
   }
   .username a:hover { text-decoration:underline; }
@@ -111,7 +117,7 @@
   .video-section h2 { margin-bottom:1.5rem; }
   .video-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:1.5rem; }
   .video-card {
-    background: rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.08); /* slightly different from index.html */
     border-radius:15px;
     padding:1rem;
     text-align:center;
@@ -144,9 +150,10 @@
 
 <section class="hero">
   <img src="1755759759464.jpg" alt="RA MUSIC Logo">
-  <h2>Welcome to   RA MUSIC ★</h2>
-  <p>Follow me on Instagram to watch reels, shorts, and latest updates!</p>
+  <h2>Follow RA MUSIC ★ on Instagram</h2>
+  <p>Watch my reels, shorts, and latest updates directly on Instagram!</p>
   <a class="btn" href="https://www.instagram.com/rafahimn" target="_blank">Visit My Instagram Channel</a>
+  <p class="username"><a href="https://www.instagram.com/rafahimn" target="_blank">@rafahimn</a></p>
 </section>
 
 <section class="video-section">
