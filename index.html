@@ -1,139 +1,13 @@
-<!DOCTYPE html>
-<html lang="bn">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>RA MUSIC ★</title>
-<meta name="description" content="Welcome to RA MUSIC ★ - Enjoy the latest songs, remixes, and YouTube shorts by RA Fahim. Subscribe now!">
-<meta name="keywords" content="RA MUSIC, RA Fahim, remix, lofi, music, YouTube, Bangladesh">
-<meta name="author" content="RA Fahim">
-
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-
-  /* 🌈 Dynamic Background */
-  body {
-    background: linear-gradient(-45deg, #6a11cb, #2575fc, #b721ff, #21d4fd);
-    background-size: 400% 400%;
-    animation: softGradient 25s ease infinite;
-    color: #fff;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-  @keyframes softGradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-
-  /* Header */
-  header {  
-    background: rgba(0,0,0,0.25);
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    backdrop-filter: blur(10px);
-    z-index: 1000;
-  }
-  header h1 a { color: #fff; text-decoration: none; font-weight: bold; }
-  nav { display: flex; gap: 1rem; transition: right 0.4s ease; }
-  nav a { color: #fff; text-decoration: none; font-weight: 500; position: relative; }
-  nav a::after {
-    content: "";
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: #ffea00;
-    transition: 0.3s;
-  }
-  nav a:hover::after { width: 100%; }
-  nav a:hover { color: #ffea00; }
-
-  /* Hamburger Button */
-  .menu-toggle { display: none; flex-direction: column; cursor: pointer; z-index: 1100; }
-  .menu-toggle div {
-    width: 25px; height: 3px; background: #fff; margin: 4px;
-    transition: all 0.3s;
-  }
-  .menu-toggle.active div:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
-  .menu-toggle.active div:nth-child(2) { opacity: 0; }
-  .menu-toggle.active div:nth-child(3) { transform: rotate(-45deg) translate(6px,-6px); }
-  @media (max-width: 768px) {
-    nav {
-      position: fixed; top: 0; right: -100%; width: 70%; height: 100vh;
-      background: rgba(0,0,0,0.9); flex-direction: column; justify-content: center;
-      align-items: center; gap: 2rem;
-    }
-    nav.active { right: 0; }
-    .menu-toggle { display: flex; }
-  }
-
-  /* Hero Section */
-  .hero { text-align: center; padding: 4rem 1rem 2rem; }
-  .hero h2 { font-size: 2.5rem; margin-bottom: 0.5rem; }
-  .hero img { width: 120px; height: 120px; border-radius: 50%; margin-bottom: 1rem; border: 3px solid #ffea00; }
-  .hero p { font-size: 1.1rem; max-width: 600px; margin: 0 auto 1rem; line-height: 1.6; }
-  .btn { background: #ffea00; color: #000; padding: 0.7rem 1.4rem; border-radius: 30px; text-decoration: none; font-weight: bold; transition: transform 0.3s, box-shadow 0.3s; }
-  .btn:hover { transform: scale(1.1); box-shadow: 0 0 10px #ffea00; }
-
-  /* Search Bar */
-  .search-container { text-align:center; margin:1.5rem 0; position: relative; }
-  .search-container input {
-    padding:0.6rem 1rem;
-    border-radius:25px;
-    border:none;
-    outline:none;
-    max-width:350px;
-    width:90%;
-    box-shadow:0 0 10px rgba(0,0,0,0.5);
-  }
-  .search-results {
-    position: absolute;
-    top: 45px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    max-width: 350px;
-    background: rgba(0,0,0,0.7);
-    border-radius: 10px;
-    padding: 0.3rem 0;
-    color:#ffea00;
-    z-index: 1000;
-  }
-  .search-results a {
-    display:block;
-    padding:0.4rem 0.8rem;
-    text-decoration:none;
-    color:#ffea00;
-    transition: background 0.2s;
-  }
-  .search-results a:hover { background: rgba(255,255,255,0.1); text-decoration: none; }
-
-  /* Videos Section */
-  section { padding: 3rem 1rem; max-width: 1000px; margin: auto; }
-  .video-section { margin-bottom: 3rem; }
-  .video-section h2 { text-align: center; margin-bottom: 1.5rem; }
-  .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
-  .video-card { background: rgba(255,255,255,0.1); border-radius: 15px; padding: 1rem; text-align: center; transition: 0.3s; }
-  .video-card:hover { background: rgba(255,255,255,0.2); transform: translateY(-5px); }
-  .video-card a { color: #00ffe0; text-decoration: none; font-weight: 500; }
-  .video-card a:hover { color: #ffea00; text-shadow: 0 0 10px #ffea00; }
-
-  /* Footer */
-  footer { background: rgba(0,0,0,0.3); text-align: center; padding: 1.5rem; font-size: 0.9rem; margin-top: 2rem; }
-  footer a { color: #ffea00; text-decoration: none; }
-</style>
-</head>
-<body>
-
 <header>
   <h1><a href="index.html">RA MUSIC ★</a></h1>
 
+  <!-- Search Bar -->
+  <div class="header-search">
+    <input type="text" id="searchInput" placeholder="Search...">
+    <div id="searchResults" class="search-results"></div>
+  </div>
+
+  <!-- Hamburger Menu -->
   <div class="menu-toggle" onclick="toggleMenu()">
     <div></div><div></div><div></div>
   </div>
@@ -146,58 +20,100 @@
   </nav>
 </header>
 
-<section class="hero">
-  <img src="1755759759464.jpg" alt="RA MUSIC Logo">
-  <h2>Welcome to RA MUSIC ★</h2>
-  <p>Subscribe to my channel and enjoy the latest songs, remixes & shorts!</p>
-  <a class="btn" href="https://youtube.com/@rafahimn?si=sS8mFOkLSWNocQqb" target="_blank">Visit My YouTube Channel</a>
-</section>
+<style>
+header {
+  background: rgba(0,0,0,0.25);
+  padding: 0.8rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
 
-<!-- Search Bar -->
-<div class="search-container">
-  <input type="text" id="searchInput" placeholder="Search videos, shorts...">
-  <div id="searchResults" class="search-results"></div>
-</div>
+header h1 a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
 
-<section id="long-videos" class="video-section">
-  <h2>Long Videos</h2>
-  <div class="video-grid">
-    <div class="video-card">
-      <h3>Video 1</h3>
-      <p><a href="https://youtu.be/tr-FkYSZ3II?si=xu0GyUjXTZJmGwFL" target="_blank">Ayaz Erdoğan - Hep Mi Ben? (Remix)</a></p>
-    </div>
-    <div class="video-card">
-      <h3>Video 2</h3>
-      <p><a href="https://youtu.be/j3juWkCQztw?si=dvaw8QGTNfXj3991" target="_blank">Mann Mera - Lofi (Slowed + Reverb)</a></p>
-    </div>
-  </div>
-</section>
+/* Search in header */
+.header-search {
+  position: relative;
+  margin-left: 1rem;
+  flex: 1;
+  max-width: 250px;
+}
 
-<section id="shorts" class="video-section">
-  <h2>Shorts</h2>
-  <div class="video-grid">
-    <div class="video-card">
-      <h3>Short 1</h3>
-      <p><a href="https://www.youtube.com/shorts/Rr9HxX6MxsQ" target="_blank">প্রতিটি মেয়েই নিষ্ঠুর হওয়ার অসীম ক্ষমতা নিয়ে জন্মায় 😅🖤🥀</a></p>
-    </div>
-    <div class="video-card">
-      <h3>Short 2</h3>
-      <p><a href="https://youtube.com/shorts/CCPAn6TliKs" target="_blank">She is looking so beautiful ❤️‍🩹But she come not for me 😥</a></p>
-    </div>
-  </div>
-</section>
+.header-search input {
+  width: 100%;
+  padding: 0.35rem 0.6rem;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+}
 
-<footer>
-  © 2025 | Developed by <a href="https://www.facebook.com/rafahimn" target="_blank">RA Fahim</a>
-</footer>
+.header-search input::placeholder {
+  color: #ddd;
+}
+
+/* Suggestion dropdown */
+.search-results {
+  position: absolute;
+  top: 36px;
+  left: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.25);
+  border-radius: 8px;
+  max-height: 180px;
+  overflow-y: auto;
+  display: none;
+  z-index: 1000;
+}
+
+.search-results a {
+  display: block;
+  padding: 0.3rem 0.6rem;
+  color: #ffea00;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.search-results a:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+/* Hamburger menu */
+.menu-toggle { display:none; flex-direction:column; cursor:pointer; z-index:1100; }
+.menu-toggle div { width: 25px; height: 3px; background: #fff; margin: 3px 0; transition: 0.3s; }
+.menu-toggle.active div:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+.menu-toggle.active div:nth-child(2) { opacity: 0; }
+.menu-toggle.active div:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+/* Responsive */
+@media(max-width:768px){
+  header { flex-wrap: wrap; justify-content: space-between; }
+  .header-search { max-width:100%; margin:0.5rem 0; order:2; }
+  nav { position: fixed; top:0; right:-100%; width:70%; height:100vh; background: rgba(0,0,0,0.9); flex-direction: column; justify-content:center; align-items:center; gap:2rem; }
+  nav.active { right:0; }
+  .menu-toggle { display:flex; order:1; }
+}
+</style>
 
 <script>
+// Toggle menu
 function toggleMenu() {
   document.getElementById("menu").classList.toggle("active");
   document.querySelector(".menu-toggle").classList.toggle("active");
 }
 
-/* Search Functionality */
+// Search functionality
 const items = [
   { title: "Ayaz Erdoğan - Hep Mi Ben? (Remix)", url: "https://youtu.be/tr-FkYSZ3II?si=xu0GyUjXTZJmGwFL" },
   { title: "Mann Mera - Lofi (Slowed + Reverb)", url: "https://youtu.be/j3juWkCQztw?si=dvaw8QGTNfXj3991" },
@@ -211,7 +127,10 @@ const searchResults = document.getElementById("searchResults");
 searchInput.addEventListener("input", () => {
   const query = searchInput.value.toLowerCase();
   searchResults.innerHTML = "";
-  if(query === "") return;
+  if(query === "") {
+    searchResults.style.display = "none";
+    return;
+  }
   const filtered = items.filter(item => item.title.toLowerCase().includes(query));
   filtered.forEach(item => {
     const a = document.createElement("a");
@@ -220,8 +139,6 @@ searchInput.addEventListener("input", () => {
     a.textContent = item.title;
     searchResults.appendChild(a);
   });
+  searchResults.style.display = filtered.length > 0 ? "block" : "none";
 });
 </script>
-
-</body>
-</html>
