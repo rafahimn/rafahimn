@@ -20,7 +20,7 @@
 
   /* Header */
   header {
-    background: rgba(0, 0, 0, 0.35); /* glassy look */
+    background: rgba(0, 0, 0, 0.35);
     padding:1rem 2rem;
     display:flex;
     justify-content:space-between;
@@ -87,13 +87,17 @@
     .menu-toggle { display:flex; }
   }
 
-  /* Section */
-  section { padding:3rem 1rem; max-width:1000px; margin:auto; text-align:center; }
-  section h2 { font-size:2rem; margin-bottom:1rem; }
+  /* Hero */
+  .hero { text-align:center; padding:4rem 1rem 3rem; }
+  .hero img { width:120px; height:120px; border-radius:50%; margin-bottom:1rem; border:3px solid #ffea00; }
+  .hero h2 { font-size:2.5rem; margin-bottom:0.5rem; }
+  .hero p { font-size:1.1rem; max-width:600px; margin:0 auto 1.5rem; line-height:1.6; }
+  .btn { background:#ffea00; color:#000; padding:0.7rem 1.4rem; border-radius:30px; text-decoration:none; font-weight:bold; transition: transform 0.3s; }
+  .btn:hover { transform: scale(1.1); }
 
   /* Instagram Username */
   .username a {
-    color:#ffea00; /* হলুদ */
+    color:#ffea00;
     font-size:1.5rem;
     margin-top:1rem;
     display:inline-block;
@@ -139,9 +143,11 @@
   </nav>
 </header>
 
-<section>
-  <h2>Follow Us on Instagram</h2>
-  <p class="username"><a href="https://www.instagram.com/rafahimn" target="_blank">@rafahimn</a></p>
+<section class="hero">
+  <img src="1755759759464.jpg" alt="RA MUSIC Logo">
+  <h2>Welcome to RA MUSIC ★</h2>
+  <p>Follow me on Instagram to watch reels, shorts, and latest updates!</p>
+  <a class="btn" href="https://www.instagram.com/rafahimn" target="_blank">Visit My Instagram Channel</a>
 </section>
 
 <section class="video-section">
