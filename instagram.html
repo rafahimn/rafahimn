@@ -11,7 +11,6 @@
 <style>
   * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
 
-  /* Main Background (blue gradient) */
   body {
     background: linear-gradient(to right, #0061ff, #60efff);
     color:#fff;
@@ -19,9 +18,9 @@
     overflow-x:hidden;
   }
 
-  /* Header with unique subtle color */
+  /* Header */
   header {
-    background: rgba(0, 0, 0, 0.35); /* subtle unique glassy look */
+    background: rgba(0, 0, 0, 0.35); /* glassy look */
     padding:1rem 2rem;
     display:flex;
     justify-content:space-between;
@@ -93,7 +92,15 @@
   section h2 { font-size:2rem; margin-bottom:1rem; }
 
   /* Instagram Username */
-  .username { color:#ffea00; font-size:1.5rem; margin-top:1rem; display:inline-block; font-weight:bold; }
+  .username a {
+    color:#ffea00; /* হলুদ */
+    font-size:1.5rem;
+    margin-top:1rem;
+    display:inline-block;
+    font-weight:bold;
+    text-decoration:none;
+  }
+  .username a:hover { text-decoration:underline; }
 
   /* Video Grid */
   .video-section { margin-top:3rem; }
@@ -120,7 +127,6 @@
 <header>
   <h1><a href="index.html">RA MUSIC ★</a></h1>
 
-  <!-- Hamburger -->
   <div class="menu-toggle" onclick="toggleMenu()">
     <div></div><div></div><div></div>
   </div>
@@ -129,16 +135,17 @@
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
+    <a href="https://www.instagram.com/rafahimn" target="_blank" class="username">@rafahimn</a>
   </nav>
 </header>
 
 <section>
-  <h2>Follow me on Instagram</h2>
+  <h2>Follow Us on Instagram</h2>
   <p class="username"><a href="https://www.instagram.com/rafahimn" target="_blank">@rafahimn</a></p>
 </section>
 
 <section class="video-section">
-  <h2>Instagram Videos / Shorts</h2>
+  <h2>Instagram Reels</h2>
   <div class="video-grid">
     <div class="video-card">
       <h3>Reels 1</h3>
