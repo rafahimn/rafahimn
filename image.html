@@ -4,45 +4,41 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gallery | RA MUSIC ★</title>
-<meta name="description" content="Explore RA MUSIC ★ gallery — photos, covers, and behind the scenes.">
-<meta name="author" content="RA Fahim">
 
 <style>
   * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
 
-  /* Dynamic rainbow background */
+  /* Dynamic Background */
   body {
-    background: linear-gradient(270deg, #ff6ec4, #7873f5, #00ffff, #f9ff00, #ff6ec4);
-    background-size: 1000% 1000%;
-    animation: gradientBG 30s ease infinite;
-    color:#fff;
-    min-height:100vh;
-    overflow-x:hidden;
+    background: linear-gradient(-45deg, #6a11cb, #2575fc, #21d4fd, #b721ff);
+    background-size: 400% 400%;
+    animation: softGradient 25s ease infinite;
+    min-height: 100vh;
+    color: #fff;
+    overflow-x: hidden;
   }
 
-  @keyframes gradientBG {
-    0% { background-position:0% 50%; }
-    50% { background-position:100% 50%; }
-    100% { background-position:0% 50%; }
+  @keyframes softGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
 
   /* Header */
   header {
-    background: rgba(0,0,0,0.2);
-    padding:1rem 2rem;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    position:sticky;
-    top:0;
+    background: rgba(0,0,0,0.25);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
     backdrop-filter: blur(10px);
-    z-index:1000;
+    z-index: 1000;
   }
   header h1 a { color:#fff; text-decoration:none; font-weight:bold; }
-  nav { display:flex; gap:1rem; transition:right 0.4s ease; }
-  nav a {
-    color:#fff; text-decoration:none; font-weight:500; position:relative;
-  }
+  nav { display:flex; gap:1rem; }
+  nav a { color:#fff; text-decoration:none; font-weight:500; position:relative; }
   nav a::after {
     content:"";
     position:absolute;
@@ -56,94 +52,62 @@
   nav a:hover::after { width:100%; }
   nav a:hover { color:#ffea00; }
 
-  /* Mobile Menu */
+  /* Hamburger */
   .menu-toggle {
     display:none; flex-direction:column; cursor:pointer; z-index:1100;
   }
   .menu-toggle div {
-    width:25px; height:3px; background:#fff; margin:4px; transition:all 0.3s;
+    width:25px; height:3px; background:#fff; margin:4px; transition:0.3s;
   }
-  .menu-toggle.active div:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
-  .menu-toggle.active div:nth-child(2){opacity:0;}
-  .menu-toggle.active div:nth-child(3){transform:rotate(-45deg) translate(6px,-6px);}
-  @media(max-width:768px){
-    nav{
-      position:fixed; top:0; right:-100%; width:70%; height:100vh;
-      background:rgba(0,0,0,0.9); flex-direction:column; justify-content:center; align-items:center; gap:2rem;
-    }
-    nav.active{ right:0; }
-    .menu-toggle{ display:flex; }
+  .menu-toggle.active div:nth-child(1) { transform:rotate(45deg) translate(5px,5px); }
+  .menu-toggle.active div:nth-child(2) { opacity:0; }
+  .menu-toggle.active div:nth-child(3) { transform:rotate(-45deg) translate(6px,-6px); }
+  @media (max-width:768px){
+    nav { position:fixed; top:0; right:-100%; width:70%; height:100vh; background:rgba(0,0,0,0.9); flex-direction:column; justify-content:center; align-items:center; gap:2rem; }
+    nav.active { right:0; }
+    .menu-toggle { display:flex; }
   }
 
   /* Gallery Section */
-  .gallery {
-    text-align:center;
-    padding:4rem 1rem;
-    max-width:1100px;
-    margin:auto;
-  }
-  .gallery h2 {
-    font-size:2rem;
-    color:#ffea00;
-    text-shadow:0 0 10px rgba(255,255,255,0.4);
-    margin-bottom:0.5rem;
-  }
-  .gallery p {
-    color:#fff;
-    opacity:0.9;
-    margin-bottom:2rem;
-  }
-  .image-grid {
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:1.5rem;
-  }
-  .image-grid img {
-    width:100%;
-    border-radius:15px;
-    border:2px solid rgba(255,255,255,0.3);
-    transition:transform 0.4s ease, box-shadow 0.4s ease;
-  }
-  .image-grid img:hover {
-    transform:scale(1.08);
-    box-shadow:0 0 25px rgba(255,255,255,0.5);
-  }
+  section { padding:3rem 1rem; max-width:1200px; margin:auto; }
+  section h2 { text-align:center; margin-bottom:2rem; }
+  .gallery-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.5rem; }
+  .gallery-card { border-radius:15px; overflow:hidden; transition:0.3s; }
+  .gallery-card img { width:100%; height:100%; object-fit:cover; display:block; transition: transform 0.3s; }
+  .gallery-card:hover img { transform: scale(1.05); }
 
   /* Footer */
-  footer {
-    background: rgba(0,0,0,0.3);
-    text-align:center;
-    padding:1.5rem;
-    font-size:0.9rem;
-    margin-top:2rem;
-  }
+  footer { text-align:center; padding:1.5rem; font-size:0.9rem; margin-top:2rem; background:rgba(0,0,0,0.3);}
   footer a { color:#ffea00; text-decoration:none; }
+
 </style>
 </head>
-
 <body>
+
 <header>
   <h1><a href="index.html">RA MUSIC ★</a></h1>
+
   <div class="menu-toggle" onclick="toggleMenu()">
     <div></div><div></div><div></div>
   </div>
+
   <nav id="menu">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
-    <a href="instagram.html">Instagram</a>
+    <a href="image.html">Gallery</a>
     <a href="contact.html">Contact</a>
-    <a href="image.html" style="color:#ffea00;">Gallery</a> <!-- Highlight current page -->
+    <a href="instagram.html">Instagram</a>
   </nav>
 </header>
 
-<section class="gallery">
-  <h2>📸 My Gallery</h2>
-  <p>Explore some amazing visuals from my music journey!</p>
-  <div class="image-grid">
-    <img src="images/gallery1.jpg" alt="Studio Work">
-    <img src="images/gallery2.jpg" alt="Cover Art">
-    <img src="images/gallery3.jpg" alt="Behind the Scenes">
-    <img src="images/gallery4.jpg" alt="RA Music Moments">
+<section>
+  <h2>Gallery</h2>
+  <div class="gallery-grid">
+    <div class="gallery-card"><img src="images/img1.jpg" alt="Gallery Image 1"></div>
+    <div class="gallery-card"><img src="images/img2.jpg" alt="Gallery Image 2"></div>
+    <div class="gallery-card"><img src="images/img3.jpg" alt="Gallery Image 3"></div>
+    <div class="gallery-card"><img src="images/img4.jpg" alt="Gallery Image 4"></div>
+    <div class="gallery-card"><img src="images/img5.jpg" alt="Gallery Image 5"></div>
   </div>
 </section>
 
@@ -152,7 +116,7 @@
 </footer>
 
 <script>
-function toggleMenu(){
+function toggleMenu() {
   document.getElementById("menu").classList.toggle("active");
   document.querySelector(".menu-toggle").classList.toggle("active");
 }
