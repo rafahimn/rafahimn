@@ -4,10 +4,14 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>RA MUSIC ★</title>
+<meta name="description" content="Welcome to RA MUSIC ★ - Enjoy the latest songs, remixes, and YouTube shorts by RA Fahim. Subscribe now!">
+<meta name="keywords" content="RA MUSIC, RA Fahim, remix, lofi, music, YouTube, Bangladesh">
+<meta name="author" content="RA Fahim">
 
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
+  /* 🌈 Dynamic Background */
   body {
     background: linear-gradient(-45deg, #6a11cb, #2575fc, #b721ff, #21d4fd);
     background-size: 400% 400%;
@@ -16,7 +20,6 @@
     min-height: 100vh;
     overflow-x: hidden;
   }
-
   @keyframes softGradient {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -34,96 +37,102 @@
     top: 0;
     backdrop-filter: blur(10px);
     z-index: 1000;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+  }
+  header h1 a { color: #fff; text-decoration: none; font-weight: bold; }
+  nav { display: flex; gap: 1rem; transition: right 0.4s ease; }
+  nav a { color: #fff; text-decoration: none; font-weight: 500; position: relative; }
+  nav a::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #ffea00;
+    transition: 0.3s;
+  }
+  nav a:hover::after { width: 100%; }
+  nav a:hover { color: #ffea00; }
+
+  /* Hamburger Button */
+  .menu-toggle { display: none; flex-direction: column; cursor: pointer; z-index: 1100; }
+  .menu-toggle div {
+    width: 25px; height: 3px; background: #fff; margin: 4px;
+    transition: all 0.3s;
+  }
+  .menu-toggle.active div:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+  .menu-toggle.active div:nth-child(2) { opacity: 0; }
+  .menu-toggle.active div:nth-child(3) { transform: rotate(-45deg) translate(6px,-6px); }
+  @media (max-width: 768px) {
+    nav {
+      position: fixed; top: 0; right: -100%; width: 70%; height: 100vh;
+      background: rgba(0,0,0,0.9); flex-direction: column; justify-content: center;
+      align-items: center; gap: 2rem;
+    }
+    nav.active { right: 0; }
+    .menu-toggle { display: flex; }
   }
 
-  header h1 { font-weight:bold; font-size:1.5rem; }
-  header h1 a { color:#fff; text-decoration:none; }
+  /* Hero Section */
+  .hero { text-align: center; padding: 4rem 1rem 2rem; }
+  .hero h2 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+  .hero img { width: 120px; height: 120px; border-radius: 50%; margin-bottom: 1rem; border: 3px solid #ffea00; }
+  .hero p { font-size: 1.1rem; max-width: 600px; margin: 0 auto 1rem; line-height: 1.6; }
+  .btn { background: #ffea00; color: #000; padding: 0.7rem 1.4rem; border-radius: 30px; text-decoration: none; font-weight: bold; transition: transform 0.3s, box-shadow 0.3s; }
+  .btn:hover { transform: scale(1.1); box-shadow: 0 0 10px #ffea00; }
 
-  /* Search bar inside header */
-  .search-container {
-    flex:1;
-    display:flex;
-    justify-content:flex-end;
-  }
-
+  /* Search Bar */
+  .search-container { text-align:center; margin:1.5rem 0; position: relative; }
   .search-container input {
-    padding:0.5rem 1rem;
+    padding:0.6rem 1rem;
     border-radius:25px;
     border:none;
     outline:none;
-    max-width:250px;
+    max-width:350px;
+    width:90%;
+    box-shadow:0 0 10px rgba(0,0,0,0.5);
   }
-
-  nav { display:flex; gap:1rem; transition:right 0.4s ease; flex-wrap: wrap; }
-  nav a { color:#fff; text-decoration:none; font-weight:500; position:relative; }
-  nav a::after { content:""; position:absolute; bottom:-4px; left:0; width:0; height:2px; background:#ffea00; transition:0.3s; }
-  nav a:hover::after { width:100%; }
-  nav a:hover { color:#ffea00; }
-
-  /* Hamburger */
-  .menu-toggle { display:none; flex-direction:column; cursor:pointer; z-index:1100; }
-  .menu-toggle div { width:25px; height:3px; background:#fff; margin:4px; transition:0.3s; }
-  .menu-toggle.active div:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
-  .menu-toggle.active div:nth-child(2) { opacity:0; }
-  .menu-toggle.active div:nth-child(3) { transform: rotate(-45deg) translate(6px,-6px); }
-
-  @media(max-width:768px){
-    nav {
-      position:fixed;
-      top:0; right:-100%;
-      width:70%; height:100vh;
-      background:rgba(0,0,0,0.9);
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
-      gap:2rem;
-    }
-    nav.active { right:0; }
-    .menu-toggle { display:flex; }
-    .search-container { width:100%; justify-content:center; margin-top:0.5rem; }
-    .search-container input { max-width:90%; }
+  .search-results {
+    position: absolute;
+    top: 45px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 350px;
+    background: rgba(0,0,0,0.7);
+    border-radius: 10px;
+    padding: 0.3rem 0;
+    color:#ffea00;
+    z-index: 1000;
   }
+  .search-results a {
+    display:block;
+    padding:0.4rem 0.8rem;
+    text-decoration:none;
+    color:#ffea00;
+    transition: background 0.2s;
+  }
+  .search-results a:hover { background: rgba(255,255,255,0.1); text-decoration: none; }
 
-  /* Hero & Videos (same as before) */
-  .hero { text-align:center; padding:4rem 1rem 3rem; }
-  .hero h2 { font-size:2.5rem; margin-bottom:0.5rem; }
-  .hero img { width:120px; height:120px; border-radius:50%; margin-bottom:1rem; border:3px solid #ffea00; }
-  .hero p { font-size:1.1rem; max-width:600px; margin:0 auto 1.5rem; line-height:1.6; }
-  .btn { background:#ffea00; color:#000; padding:0.7rem 1.4rem; border-radius:30px; text-decoration:none; font-weight:bold; transition:transform 0.3s, box-shadow 0.3s; }
-  .btn:hover { transform:scale(1.1); box-shadow:0 0 10px #ffea00; }
+  /* Videos Section */
+  section { padding: 3rem 1rem; max-width: 1000px; margin: auto; }
+  .video-section { margin-bottom: 3rem; }
+  .video-section h2 { text-align: center; margin-bottom: 1.5rem; }
+  .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+  .video-card { background: rgba(255,255,255,0.1); border-radius: 15px; padding: 1rem; text-align: center; transition: 0.3s; }
+  .video-card:hover { background: rgba(255,255,255,0.2); transform: translateY(-5px); }
+  .video-card a { color: #00ffe0; text-decoration: none; font-weight: 500; }
+  .video-card a:hover { color: #ffea00; text-shadow: 0 0 10px #ffea00; }
 
-  section { padding:3rem 1rem; max-width:1000px; margin:auto; }
-  .video-section { margin-bottom:3rem; }
-  .video-section h2 { text-align:center; margin-bottom:1.5rem; }
-  .video-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:1.5rem; }
-  .video-card { background:rgba(255,255,255,0.1); border-radius:15px; padding:1rem; text-align:center; transition:0.3s; }
-  .video-card:hover { background:rgba(255,255,255,0.2); transform:translateY(-5px); }
-  .video-card a { color:#00ffe0; text-decoration:none; font-weight:500; }
-  .video-card a:hover { color:#ffea00; text-shadow:0 0 10px #ffea00; }
-
-  /* Search results dropdown */
-  #searchResults { position:absolute; background:rgba(0,0,0,0.9); margin-top:0.3rem; border-radius:10px; max-height:250px; overflow-y:auto; width:250px; z-index:1000; }
-  #searchResults div { padding:0.5rem 1rem; border-bottom:1px solid rgba(255,255,255,0.1); }
-  #searchResults div:last-child { border-bottom:none; }
-  #searchResults a { color:#00ffe0; text-decoration:none; }
-  #searchResults a:hover { color:#ffea00; }
-
-  footer { background:rgba(0,0,0,0.3); text-align:center; padding:1.5rem; font-size:0.9rem; margin-top:2rem; }
-  footer a { color:#ffea00; text-decoration:none; }
-
+  /* Footer */
+  footer { background: rgba(0,0,0,0.3); text-align: center; padding: 1.5rem; font-size: 0.9rem; margin-top: 2rem; }
+  footer a { color: #ffea00; text-decoration: none; }
 </style>
 </head>
 <body>
 
 <header>
   <h1><a href="index.html">RA MUSIC ★</a></h1>
-
-  <div class="search-container">
-    <input type="text" id="searchInput" placeholder="Search videos, shorts, gallery...">
-    <div id="searchResults"></div>
-  </div>
 
   <div class="menu-toggle" onclick="toggleMenu()">
     <div></div><div></div><div></div>
@@ -143,6 +152,12 @@
   <p>Subscribe to my channel and enjoy the latest songs, remixes & shorts!</p>
   <a class="btn" href="https://youtube.com/@rafahimn?si=sS8mFOkLSWNocQqb" target="_blank">Visit My YouTube Channel</a>
 </section>
+
+<!-- Search Bar -->
+<div class="search-container">
+  <input type="text" id="searchInput" placeholder="Search videos, shorts...">
+  <div id="searchResults" class="search-results"></div>
+</div>
 
 <section id="long-videos" class="video-section">
   <h2>Long Videos</h2>
@@ -182,35 +197,28 @@ function toggleMenu() {
   document.querySelector(".menu-toggle").classList.toggle("active");
 }
 
-// Search Data
-const data = [
-  { type: 'Video', title: 'Ayaz Erdoğan - Hep Mi Ben? (Remix)', link: 'https://youtu.be/tr-FkYSZ3II?si=xu0GyUjXTZJmGwFL' },
-  { type: 'Video', title: 'Mann Mera - Lofi (Slowed + Reverb)', link: 'https://youtu.be/j3juWkCQztw?si=dvaw8QGTNfXj3991' },
-  { type: 'Short', title: 'প্রতিটি মেয়েই নিষ্ঠুর হওয়ার অসীম ক্ষমতা নিয়ে জন্মায় 😅🖤🥀', link: 'https://www.youtube.com/shorts/Rr9HxX6MxsQ' },
-  { type: 'Short', title: 'She is looking so beautiful ❤️‍🩹But she come not for me 😥', link: 'https://youtube.com/shorts/CCPAn6TliKs' },
-  { type: 'Gallery', title: 'My first remix 🎧🔥', link: 'image.html#img1' },
-  { type: 'Gallery', title: 'Relaxing Lofi Beats 🎶', link: 'image.html#img2' },
-  { type: 'Gallery', title: 'Chill Vibes 🌌', link: 'image.html#img3' }
+/* Search Functionality */
+const items = [
+  { title: "Ayaz Erdoğan - Hep Mi Ben? (Remix)", url: "https://youtu.be/tr-FkYSZ3II?si=xu0GyUjXTZJmGwFL" },
+  { title: "Mann Mera - Lofi (Slowed + Reverb)", url: "https://youtu.be/j3juWkCQztw?si=dvaw8QGTNfXj3991" },
+  { title: "প্রতিটি মেয়েই নিষ্ঠুর হওয়ার অসীম ক্ষমতা নিয়ে জন্মায় 😅🖤🥀", url: "https://www.youtube.com/shorts/Rr9HxX6MxsQ" },
+  { title: "She is looking so beautiful ❤️‍🩹But she come not for me 😥", url: "https://youtube.com/shorts/CCPAn6TliKs" }
 ];
 
-const input = document.getElementById('searchInput');
-const resultsDiv = document.getElementById('searchResults');
+const searchInput = document.getElementById("searchInput");
+const searchResults = document.getElementById("searchResults");
 
-input.addEventListener('input', function() {
-  const query = this.value.toLowerCase();
-  resultsDiv.innerHTML = '';
-  if(query.length === 0) return;
-
-  const filtered = data.filter(item => item.title.toLowerCase().includes(query));
-  if(filtered.length === 0) {
-    resultsDiv.innerHTML = '<div style="color:#ffea00;">No results found</div>';
-    return;
-  }
-
+searchInput.addEventListener("input", () => {
+  const query = searchInput.value.toLowerCase();
+  searchResults.innerHTML = "";
+  if(query === "") return;
+  const filtered = items.filter(item => item.title.toLowerCase().includes(query));
   filtered.forEach(item => {
-    const div = document.createElement('div');
-    div.innerHTML = `<strong>${item.type}:</strong> <a href="${item.link}" target="_blank">${item.title}</a>`;
-    resultsDiv.appendChild(div);
+    const a = document.createElement("a");
+    a.href = item.url;
+    a.target = "_blank";
+    a.textContent = item.title;
+    searchResults.appendChild(a);
   });
 });
 </script>
