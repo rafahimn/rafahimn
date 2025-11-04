@@ -11,24 +11,26 @@
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
-  /* Dynamic Background */
+  /* Dynamic Gradient Background */
   body {
-    background: linear-gradient(270deg, #0061ff, #60efff, #00d4ff);
-    background-size: 600% 600%;
-    animation: gradientBG 15s ease infinite;
+    background: linear-gradient(-45deg, #0061ff, #00d4ff, #00ffe5, #60efff);
+    background-size: 800% 800%;
+    animation: gradientBG 20s ease infinite;
     color: #fff;
     min-height: 100vh;
   }
 
   @keyframes gradientBG {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
+    0% {background-position:0% 50%;}
+    25% {background-position:50% 100%;}
+    50% {background-position:100% 50%;}
+    75% {background-position:50% 0%;}
+    100% {background-position:0% 50%;}
   }
 
   /* Header */
   header {  
-    background: rgba(0,0,0,0.25);
+    background: rgba(0,0,0,0.2);
     padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
@@ -94,6 +96,7 @@
   .menu-toggle.active div:nth-child(2) { opacity: 0; }
   .menu-toggle.active div:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
 
+  /* Mobile View */
   @media (max-width: 768px) {
     nav {
       position: fixed;
@@ -116,9 +119,13 @@
 
 <header>
   <h1><a href="index.html">RA MUSIC ★</a></h1>
+
+  <!-- Menu Button -->
   <div class="menu-toggle" onclick="toggleMenu()">
     <div></div><div></div><div></div>
   </div>
+
+  <!-- Navigation -->
   <nav id="menu">
     <a href="about.html">About</a>
     <a href="#long-videos">Long Videos</a>
