@@ -22,7 +22,6 @@
     100% { background-position: 0% 50%; }
   }
 
-  /* Header */
   header {  
     background: rgba(0,0,0,0.25);
     padding: 1rem 2rem;
@@ -45,7 +44,7 @@
     flex:1;
     display:flex;
     justify-content:flex-end;
-    position:relative; /* dropdown position relative to input */
+    position:relative;
   }
 
   .search-container input {
@@ -58,13 +57,13 @@
 
   #searchResults {
     position: absolute;
-    top: calc(100% + 5px); /* input-এর ঠিক নিচে */
+    top: calc(100% + 5px);
     right: 0;
     background: rgba(0,0,0,0.9);
     border-radius: 10px;
     max-height: 250px;
     overflow-y: auto;
-    width: 100%; /* input-এর width অনুযায়ী */
+    width: 100%;
     z-index: 2000;
   }
   #searchResults div { padding:0.5rem 1rem; border-bottom:1px solid rgba(255,255,255,0.1); }
@@ -85,7 +84,6 @@
   .menu-toggle.active div:nth-child(2) { opacity:0; }
   .menu-toggle.active div:nth-child(3) { transform: rotate(-45deg) translate(6px,-6px); }
 
-  /* Hero & Videos */
   .hero { text-align:center; padding:4rem 1rem 3rem; }
   .hero h2 { font-size:2.5rem; margin-bottom:0.5rem; }
   .hero img { width:120px; height:120px; border-radius:50%; margin-bottom:1rem; border:3px solid #ffea00; }
@@ -136,7 +134,7 @@
     <div id="searchResults"></div>
   </div>
 
-  <div class="menu-toggle" onclick="toggleMenu()">
+  <div class="menu-toggle" onclick="toggleMenu()">  
     <div></div><div></div><div></div>
   </div>
 
@@ -145,6 +143,7 @@
     <a href="image.html">Gallery</a>
     <a href="contact.html">Contact</a>
     <a href="instagram.html">Instagram</a>
+    <a href="#" onclick="shareSite(); toggleMenu();">Share</a>
   </nav>
 </header>
 
@@ -191,6 +190,22 @@
 function toggleMenu() {
   document.getElementById("menu").classList.toggle("active");
   document.querySelector(".menu-toggle").classList.toggle("active");
+}
+
+// Share function
+function shareSite() {
+  if (navigator.share) {
+    navigator.share({
+      title: 'RA MUSIC ★',
+      text: 'Check out RA MUSIC ★ website!',
+      url: window.location.href
+    }).then(() => console.log('Thanks for sharing!'))
+      .catch(console.error);
+  } else {
+    navigator.clipboard.writeText(window.location.href)
+      .then(() => alert('Link copied to clipboard!'))
+      .catch(() => alert('Copy failed. Please copy manually.'));
+  }
 }
 
 // Search Data
